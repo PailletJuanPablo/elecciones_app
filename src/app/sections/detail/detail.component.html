@@ -1,0 +1,46 @@
+<div class="top-container">
+  <div class="row">
+    <form>
+    <div class="input-field col s12">
+      <input id="mesa" type="text" class="validate" name="nroMesa" [(ngModel)]="nroMesa" />
+      <label for="mesa">Ingresar nro. Mesa</label>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" (click)="search()" name="action">Mostrar</button>
+  </form>
+  </div>
+</div>
+
+<div class="row" *ngIf="processed">
+  <div class="col m5">
+    <ul class="collection with-header">
+      <li class="collection-header">
+        <h5>Detalles de la mesa nº {{ mesaData.descripcion_ubicacion }}</h5>
+      </li>
+      <li class="collection-item">Cantidad de Votantes: {{ mesaData.cant_votantes }}</li>
+      <li class="collection-item">Porcentaje de Participación: {{ roundNumber(mesaData['porcentaje_participacion']) }} %</li>
+      <li class="collection-item">Cantidad de Votos Válidos: {{ mesaData.cant_votos_positivos }}</li>
+      <li class="collection-item">Establecimiento: {{ mesaData.nombreEstablecimiento }}</li>
+      <li class="collection-item">Localidad: {{ mesaData.nombreLocalidad }}</li>
+      <li class="collection-item">Departamento: {{ mesaData.nombreDepartamento }}</li>
+    </ul>
+  </div>
+  <div class="col m7">
+    <table datatable class="row-border hover" [dtOptions]="dtOptions">
+      <thead>
+        <tr>
+          <th>Partido / Tipo </th>
+          <th>Cantidad de Votos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resultado of mesaData.resultados">
+          <td> {{ resultado.descripcion_candidatura }}</td>
+          <td> {{ resultado.cant_votos }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col m12">
+    <canvas baseChart style="width: 100vw; max-width: 100vw" [options]="mesaChartOptions" [data]="mesaChartData" [labels]="mesaChartLabels" [colors]="pieChartColors" chartType="pie"></canvas>
+  </div>
+</div>

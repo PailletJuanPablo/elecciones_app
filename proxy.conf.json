@@ -1,0 +1,7 @@
+{
+  "*": {
+     "target": "https://datosoficiales.com",
+     "secure": false,
+     "logLevel": "debug"
+  }
+}
