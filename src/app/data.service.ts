@@ -8,7 +8,7 @@ import { idNames } from './idsnames';
 })
 export class DataService {
 
-baseUrl = 'http://localhost:1234?idUrl=';
+baseUrl = 'http://107.175.132.167:1234?idUrl=';
 
   constructor(private httpClient: HttpClient) { }
 
