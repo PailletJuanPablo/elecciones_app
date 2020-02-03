@@ -8,7 +8,7 @@ import { idNames } from './idsnames';
 })
 export class DataService {
 
-baseUrl = 'http://107.175.132.167:1234?idUrl=';
+baseUrl = 'https://informes.tech/elecciones_node_app/?idUrl=';
 
   constructor(private httpClient: HttpClient) { }
 
